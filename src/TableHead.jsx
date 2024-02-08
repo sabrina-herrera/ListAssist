@@ -1,23 +1,23 @@
 function TableHead({ onSort }) {
     return ( 
         <tr>
-            <th>Complete</th>
+            <th className="header">Complete</th>
             <th>
-                <button type="button" onClick={() => onSort('name')}>
-                    Item
+                <button className="header" type="button" onClick={() => onSort('name')}>
+                    Item &uarr;&darr;
                 </button>
             </th>
             <th>
-                <button type="button" onClick={() => onSort('category')}>
-                    Category
+                <button className="header" type="button" onClick={() => onSort('category')}>
+                    Category &uarr;&darr;
                 </button>
             </th>
             <th>
-                <button type="button" onClick={() => onSort('priority')}>
-                    Priority
+                <button className="header" type="button" onClick={() => onSort('priority')}>
+                    Priority &uarr;&darr;
                 </button>
             </th>
-            <th>Delete</th>
+            <th className="header" >Delete</th>
         </tr>
 )}
 

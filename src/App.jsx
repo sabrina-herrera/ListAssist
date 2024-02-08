@@ -7,7 +7,7 @@ function App() {
   const [items, setItems] = useState([]);
   const [completed, setCompleted] = useState([]);
   const [sortConfig, setSortConfig] = useState('name');
-  const [sortDirection, setSortDirection] = useState('des');
+  const [sortDirection, setSortDirection] = useState('asc');
 
   function submit(event) {
     event.preventDefault();
@@ -31,7 +31,11 @@ function App() {
     const newItems = items.filter((item) => {
       return item.id !== itemToDelete.id;
     });
+    const newCompleted = completed.filter((item) => {
+      return item.id !== itemToDelete.id;
+    });
     setItems(newItems);
+    setCompleted(newCompleted);
   }
 
   function toggleComplete(id) {
@@ -75,6 +79,11 @@ function App() {
       item.id === id && name ? {...item, [name]:newValue} : item
     )
     setItems(editValue);
+
+    const editCompletedValue = completed.map((item) => 
+    item.id === id && name ? {...item, [name]:newValue} : item
+    )
+    setCompleted(editCompletedValue);
 }
 
   function onSort(field) {
@@ -131,31 +140,33 @@ function App() {
     }
   }
 
-
-
   return (
     <>
-      <h1>List Assist</h1>
-      <h2>Add items to your list to get started</h2>
+      <h1>LIST ASSIST</h1>
+      <h2>ADD ITEMS TO YOUR LIST TO GET STARTED</h2>
       <form onSubmit={submit} >
-        <div>
-          <label>item</label>
+        <div className="formdiv" >
+          <label>Item</label>
           <input
+            className="forminput"
             type="text"
             name="item"
             required
           />
         </div>
-        <div>
-          <label>category</label>
+        <div className="formdiv" >
+          <label>Category</label>
           <input
+            className="forminput"
             type="text"
             name="category"
           />
         </div>
-        <div>
-          <label>priority</label>
+        <div className="formdiv" 
+             id="priorityinputdiv">
+          <label>Priority</label>
           <select 
+            className="forminput"
             name="priority">
             <option value="LOW">
               LOW
@@ -168,13 +179,13 @@ function App() {
             </option>
           </select>
         </div>
-          <button type="submit" >
-            Add
-          </button>
+        <button id="submitform" type="submit" >
+          ADD
+        </button>
         
       </form>
       <table>
-        <caption>Items To Complete</caption>
+        <caption>ITEMS TO BE COMPLETED</caption>
         <thead>
           < TableHead onSort={onSort} />
         </thead>
@@ -186,7 +197,7 @@ function App() {
         </tbody>
       </table>
       <table>
-        <caption>Completed Items</caption>
+        <caption>COMPLETED ITEMS</caption>
         <thead>
           < TableHead onSort={onSort} />
         </thead>
@@ -197,6 +208,7 @@ function App() {
               ) : null)}
         </tbody>
       </table>
+      <p>*Edit list by clicking on a field</p>
     </>
   )
 }

@@ -10,10 +10,10 @@ function Item({ item, onDelete, onChange, toggleComplete }) {
                     </input>
                 </td>
                 <td><input 
-                        name="item"
+                        name="name"
                         value={item.name}
                         type='text'
-                        className="input"
+                        className="iteminput"
                         onChange={(e) => onChange(e, item.id)}
                     />
                 </td>
@@ -22,7 +22,7 @@ function Item({ item, onDelete, onChange, toggleComplete }) {
                         name="category"
                         value={item.category}
                         type="text"
-                        className="input"
+                        className="iteminput"
                         onChange={(e) => onChange(e, item.id)}
                     />
                 </td>
@@ -30,7 +30,7 @@ function Item({ item, onDelete, onChange, toggleComplete }) {
                     <select 
                         name="priority"
                         value={item.priority}
-                        className="input" 
+                        className="iteminput" 
                         onChange={(e) => onChange(e, item.id)}>
                         <option value="LOW">
                         LOW

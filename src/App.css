@@ -1,3 +1,8 @@
+/* GENERAL STYLING */
+* {
+  box-sizing: border-box;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -5,55 +10,144 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+/* FONT STYLING */
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+  color: #BF8538;
+  text-shadow: -1px 1px 0px #CC563C,
+                1px 1px 0px #CC563C,
+                1px -1px 0px #CC563C,
+                -1px -1px 0px #CC563C;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2 {
+  color: #CC563C;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+caption {
+  color: #CC563C;
 }
 
-.card {
-  padding: 2em;
+label {
+  color: #CC563C;
 }
 
-.read-the-docs {
-  color: #888;
+.header {
+  color: #F1E8D7;
 }
 
-input, label {
-  display:block;
+p {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* FORM STYLING */
+
+form {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.forminput {
+  background-color: #F1E8D7;
+  border: none;
+  width: 100%;
+  height: 32px;
+  font-size: 1rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.formdiv {
+  width: 33.4%;
+}
+
+#priorityinputdiv {
+  width: 10%;
+}
+
+#submitform {
+  background-color: #10231D;
+  color: #BF8538;
+  width: 10%;
+  padding: 0px;
+  height: 32px;
+}
+
+#submitform:hover {
+  border-color: #CC563C;
+}
+
+button {
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #CC563C;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #10231D;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+label {
+  text-align: left;
+}
+
+.forminput, label {
+  display: block;
+
 }
 
 div {
   float: left;
 }
 
+/* TABLE STYLING */
+
 td {
-  border: 1px white solid;
+  border-top: 1px #F1E8D7 solid;
+  border-bottom: 1px #F1E8D7 solid;
+  border-left: none;
+  border-right: none;
+  background-color: #F1E8D7;
 }
 
-.input {
+td>button {
+  background-color: #F1E8D7
+}
+
+
+
+.iteminput {
   border: none;
-  background-color: #242424;
+  background-color: #F1E8D7;
+  color: #10231D;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+
+
+
+table {
+  background-color: #CC563C;
+  border-radius: 10px;
+}
+
+button {
+  background-color: #CC563C;
+  color: #10231D;
+}
+
+td.button {
+  background-color: #F1E8D7;
 }
