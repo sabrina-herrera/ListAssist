@@ -6,7 +6,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
 }
 
@@ -14,13 +14,11 @@
 /* FONT STYLING */
 
 h1 {
-  font-size: 3.2em;
+  font-size: 4.5em;
   line-height: 1.1;
   color: #BF8538;
-  text-shadow: -1px 1px 0px #CC563C,
-                1px 1px 0px #CC563C,
-                1px -1px 0px #CC563C,
-                -1px -1px 0px #CC563C;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: #CC563C;
 }
 
 h2 {
@@ -29,18 +27,27 @@ h2 {
 
 caption {
   color: #CC563C;
+  padding-bottom: 10px;
+  font-size: 1.5rem;
 }
 
 label {
   color: #CC563C;
+  padding: 3px 0px;
 }
 
-.header {
+th, th > button {
   color: #F1E8D7;
+  border: 1px solid transparent;
+}
+
+th {
+  padding: 5px 0;
 }
 
 p {
   font-family: 'Montserrat', sans-serif;
+  float: right;
 }
 
 /* FORM STYLING */
@@ -49,6 +56,7 @@ form {
   display: flex;
   justify-content: space-between;
   align-items: end;
+  margin: 30px 0px;
 }
 
 .forminput {
@@ -60,12 +68,20 @@ form {
   font-family: 'Montserrat', sans-serif;
 }
 
+.forminput:focus-visible {
+  outline: 1px solid #10231D;
+}
+
 .formdiv {
   width: 33.4%;
 }
 
 #priorityinputdiv {
-  width: 10%;
+  width: 15%;
+}
+
+#priorityform {
+  cursor: pointer;
 }
 
 #submitform {
@@ -80,23 +96,6 @@ form {
   border-color: #CC563C;
 }
 
-button {
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #CC563C;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #10231D;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
 
 label {
   text-align: left;
@@ -111,6 +110,10 @@ div {
   float: left;
 }
 
+select:focus-visible {
+  outline: 1px solid #10231D;
+}
+
 /* TABLE STYLING */
 
 td {
@@ -121,33 +124,93 @@ td {
   background-color: #F1E8D7;
 }
 
+#incompletetable {
+  margin: 30px 0 30px;
+}
+
+
 td>button {
   background-color: #F1E8D7
 }
 
 
-
-.iteminput {
+.iteminput, .categoryinput, .priorityinput {
   border: none;
   background-color: #F1E8D7;
   color: #10231D;
   font-family: 'Montserrat', sans-serif;
 }
 
+.iteminput, .categoryinput {
+  width: 100%;
+}
 
+.priorityinput {
+  cursor: pointer;
+}
 
+.column1 {
+  width: 15.8%;
+}
 
+.column2, .column3 {
+  width: 28%;
+}
+
+.column4 {
+  width: 14.5%;
+}
+
+.column5 {
+  width: 12%;
+  padding: 5px;
+}
+
+textarea {
+  resize: none;
+  height: 100%;
+  border: 1px solid green;
+}
+
+textarea:focus-visible {
+  outline: 1px solid #10231D
+}
 
 table {
   background-color: #CC563C;
   border-radius: 10px;
+  padding: 0px 20px 20px 20px;
 }
 
-button {
-  background-color: #CC563C;
-  color: #10231D;
-}
 
 td.button {
   background-color: #F1E8D7;
+}
+
+button {
+  border: 1px solid transparent;
+  padding: 5px;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #CC563C;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #10231D;
+}
+
+.delete {
+  padding: 0px 5px;
+  margin: auto;
+}
+
+.complete {
+  cursor: pointer;
+}
+
+.complete:checked {
+  accent-color: #10231D;
+  border: none;
 }

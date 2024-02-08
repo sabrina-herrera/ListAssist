@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Item from './Item';
 import TableHead from './TableHead';
@@ -8,6 +8,8 @@ function App() {
   const [completed, setCompleted] = useState([]);
   const [sortConfig, setSortConfig] = useState('name');
   const [sortDirection, setSortDirection] = useState('asc');
+  const [uniqueID, setUniqueID] = useState(0);
+  const [click, setClick] = useState(true);
 
   function submit(event) {
     event.preventDefault();
@@ -15,8 +17,9 @@ function App() {
     const name = form.item.value;
     const category = form.category.value;
     const priority = form.priority.value;
+    const id = uniqueID;
     const input = {
-      id: items.length + 1,
+      id: id,
       name: name,
       category: category,
       priority: priority,
@@ -24,6 +27,9 @@ function App() {
     };
     const newItems = [...items, input];
     setItems(newItems);
+    setUniqueID(uniqueID + 1);
+    let iteminput = document.querySelector('#iteminput');
+    iteminput.focus();
     form.reset();
   }
 
@@ -85,9 +91,8 @@ function App() {
     )
     setCompleted(editCompletedValue);
 }
-
-  function onSort(field) {
-    setSortConfig(field);
+ 
+  useEffect(() => {
     if(sortDirection === 'asc') {
       setSortDirection('des')
     } else {
@@ -138,7 +143,7 @@ function App() {
     setItems(sortedItems);
     setCompleted(sortedCompleted);
     }
-  }
+  }, [sortConfig, click]);
 
   return (
     <>
@@ -146,27 +151,31 @@ function App() {
       <h2>ADD ITEMS TO YOUR LIST TO GET STARTED</h2>
       <form onSubmit={submit} >
         <div className="formdiv" >
-          <label>Item</label>
+          <label>Item
           <input
             className="forminput"
+            id='iteminput'
             type="text"
             name="item"
             required
           />
+          </label>
         </div>
         <div className="formdiv" >
-          <label>Category</label>
+          <label>Category
           <input
             className="forminput"
             type="text"
             name="category"
           />
+          </label>
         </div>
         <div className="formdiv" 
              id="priorityinputdiv">
-          <label>Priority</label>
+          <label>Priority
           <select 
             className="forminput"
+            id='priorityform'
             name="priority">
             <option value="LOW">
               LOW
@@ -178,33 +187,34 @@ function App() {
               HIGH
             </option>
           </select>
+          </label>
         </div>
         <button id="submitform" type="submit" >
           ADD
         </button>
         
       </form>
-      <table>
+      <table id='incompletetable'>
         <caption>ITEMS TO BE COMPLETED</caption>
         <thead>
-          < TableHead onSort={onSort} />
+          < TableHead setSortConfig={setSortConfig} click ={click} setClick={setClick}/>
         </thead>
         <tbody>
           {items.map((item) => 
             !item.isComplete ? (
-                < Item key={item.id} item={item} onDelete={onDelete} onChange={onChange} toggleComplete={toggleComplete}/>
+                < Item key={item.id} item={item} onDelete={onDelete} onChange={onChange} toggleComplete={toggleComplete} />
               ) : null)}
         </tbody>
       </table>
-      <table>
+      <table id='completedtable'>
         <caption>COMPLETED ITEMS</caption>
         <thead>
-          < TableHead onSort={onSort} />
+          < TableHead setSortConfig={setSortConfig} click ={click} setClick={setClick}/>
         </thead>
         <tbody>
           {completed.map((item) => 
             item.isComplete ? (
-                < Item key={item.id + "complete"} item={item} onDelete={onDelete} onChange={onChange} toggleComplete={toggleComplete}/>
+                < Item key={item.id} item={item} onDelete={onDelete} onChange={onChange} toggleComplete={toggleComplete}/>
               ) : null)}
         </tbody>
       </table>
