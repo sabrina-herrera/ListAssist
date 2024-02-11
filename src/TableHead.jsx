@@ -2,7 +2,7 @@ function TableHead({ setSortConfig, click, setClick }) {
 
     return ( 
         <tr>
-            <th className="column1">Complete</th>
+            <th className="column1">&#10003;</th>
             <th className="column2">
                 <button type="button" className="sortName" onClick={() => {setSortConfig('name'); setClick(!click)}}>
                     Item &uarr;&darr;
@@ -18,7 +18,7 @@ function TableHead({ setSortConfig, click, setClick }) {
                     Priority&uarr;&darr;
                 </button>
             </th>
-            <th className="column5" >Delete</th>
+            <th className="column5" >&#10005;</th>
         </tr>
 )}
 

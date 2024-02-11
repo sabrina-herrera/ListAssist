@@ -6,7 +6,7 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0;
+  padding: 0px 20px;
   text-align: center;
 }
 
@@ -14,7 +14,7 @@
 /* FONT STYLING */
 
 h1 {
-  font-size: 4.5em;
+  font-size: 4.5rem;
   line-height: 1.1;
   color: #BF8538;
   -webkit-text-stroke-width: 2px;
@@ -33,7 +33,6 @@ caption {
 
 label {
   color: #CC563C;
-  padding: 3px 0px;
 }
 
 th, th > button {
@@ -49,6 +48,7 @@ p {
   font-family: 'Montserrat', sans-serif;
   float: right;
 }
+
 
 /* FORM STYLING */
 
@@ -66,6 +66,7 @@ form {
   height: 32px;
   font-size: 1rem;
   font-family: 'Montserrat', sans-serif;
+  margin: 3px 0px;
 }
 
 .forminput:focus-visible {
@@ -149,20 +150,12 @@ td>button {
   cursor: pointer;
 }
 
-.column1 {
-  width: 15.8%;
-}
-
-.column2, .column3 {
-  width: 28%;
-}
-
 .column4 {
-  width: 14.5%;
+  width: auto;
 }
 
-.column5 {
-  width: 12%;
+.column1, .column5 {
+  width: auto;
   padding: 5px;
 }
 
@@ -180,6 +173,7 @@ table {
   background-color: #CC563C;
   border-radius: 10px;
   padding: 0px 20px 20px 20px;
+  width: 100%;
 }
 
 
@@ -190,7 +184,7 @@ td.button {
 button {
   border: 1px solid transparent;
   padding: 5px;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: 500;
   font-family: inherit;
   background-color: #CC563C;
@@ -213,4 +207,33 @@ button:hover {
 .complete:checked {
   accent-color: #10231D;
   border: none;
+}
+
+@media screen and (max-width: 545px){
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  caption {
+    font-size: 1rem;
+  }
+
+  th.column1, 
+  th.column5, 
+  .sortName, 
+  .sortCategory, 
+  .sortPriority, 
+  .categoryinput, 
+  .iteminput, 
+  .priorityinput, 
+  .forminput,
+  #submitform,
+  p {
+    font-size: 0.75rem;
+  }
+
 }

@@ -45,7 +45,7 @@ function Item({ item, onDelete, onChange, toggleComplete }) {
                         </option>
                     </select>
                 </td>
-                <td className="column5" ><button className="delete" onClick={() => onDelete(item)} >X</button></td>
+                <td className="column5" ><button className="delete" onClick={() => onDelete(item)} >&#10005;</button></td>
             </tr>
     )
 }
