@@ -11,6 +11,25 @@ function App() {
   const [uniqueID, setUniqueID] = useState(0);
   const [click, setClick] = useState(true);
 
+  const checkLocalStorage = () => {
+    if(localStorage.getItem('items')) {
+      let localItems = localStorage.getItem('items');
+      let localItemsArray = JSON.parse(localItems);
+      setItems(localItemsArray);
+
+      let localCompleted = localStorage.getItem('completed');
+      let localCompletedArray = JSON.parse(localCompleted);
+      setCompleted(localCompletedArray);
+
+      let uniqueKey = localStorage.getItem('uniqueID');
+      setUniqueID(uniqueKey);
+    } else { 
+      return
+    }
+  }
+  window.addEventListener('load', checkLocalStorage);
+  console.log(localStorage);
+
   function submit(event) {
     event.preventDefault();
     const form = event.target;
@@ -27,7 +46,11 @@ function App() {
     };
     const newItems = [...items, input];
     setItems(newItems);
-    setUniqueID(uniqueID + 1);
+    let newLocalItems = JSON.stringify(newItems);
+    localStorage.setItem('items', newLocalItems);
+
+    setUniqueID((uniqueID + 1));
+    localStorage.setItem("uniqueID", uniqueID + 1);
     let iteminput = document.querySelector('#iteminput');
     iteminput.focus();
     form.reset();
@@ -41,7 +64,11 @@ function App() {
       return item.id !== itemToDelete.id;
     });
     setItems(newItems);
+    let newLocalItems = JSON.stringify(newItems);
+    localStorage.setItem("items", newLocalItems);
     setCompleted(newCompleted);
+    let newLocalCompleted = JSON.stringify(newCompleted);
+    localStorage.setItem('completed', newLocalCompleted);
   }
 
   function toggleComplete(id) {
@@ -74,7 +101,11 @@ function App() {
       item.isComplete === false ? newItems.push(item) : newCompleted.push(item);
       });
     setItems(newItems);    
+    let newLocalItems = JSON.stringify(newItems);
+    localStorage.setItem("items", newLocalItems);
     setCompleted(newCompleted);
+    let newLocalCompleted = JSON.stringify(newCompleted);
+    localStorage.setItem('completed', newLocalCompleted);
   }
 
   function onChange(e, id) {
@@ -85,12 +116,16 @@ function App() {
       item.id === id && name ? {...item, [name]:newValue} : item
     )
     setItems(editValue);
+    let newLocalItems = JSON.stringify(editValue);
+    localStorage.setItem("items", newLocalItems);
 
     const editCompletedValue = completed.map((item) => 
     item.id === id && name ? {...item, [name]:newValue} : item
     )
     setCompleted(editCompletedValue);
-}
+    let newLocalCompleted = JSON.stringify(editCompletedValue);
+    localStorage.setItem('completed', newLocalCompleted);
+  }
  
   useEffect(() => {
     if(sortDirection === 'asc') {
@@ -144,6 +179,8 @@ function App() {
     setCompleted(sortedCompleted);
     }
   }, [sortConfig, click]);
+
+  console.log(localStorage);
 
   return (
     <>
