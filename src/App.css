@@ -18,21 +18,21 @@ h1 {
   line-height: 1.1;
   color: #BF8538;
   -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #CC563C;
+  -webkit-text-stroke-color: #10231D;
 }
 
 h2 {
-  color: #CC563C;
+  color: #10231D;
 }
 
 caption {
-  color: #CC563C;
+  color: #10231D;
   padding-bottom: 10px;
   font-size: 1.5rem;
 }
 
 label {
-  color: #CC563C;
+  color: #10231D;
 }
 
 th, th > button {

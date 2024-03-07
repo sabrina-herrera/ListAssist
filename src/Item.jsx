@@ -6,6 +6,7 @@ function Item({ item, onDelete, onChange, toggleComplete }) {
                     <input type="checkbox" 
                            id={item.id + 'checkbox'}
                            className='complete' 
+                           aria-label="complete checkbox"
                            checked={item.isComplete} 
                            onChange={() => toggleComplete(item.id)}>
                     </input>
@@ -15,7 +16,8 @@ function Item({ item, onDelete, onChange, toggleComplete }) {
                         name="name"
                         value={item.name}
                         type='text'
-                        className="iteminput"
+                        className="iteminput" 
+                        aria-label="name"
                         onChange={(e) => onChange(e, item.id)}
                     />
                 </td>
@@ -24,7 +26,8 @@ function Item({ item, onDelete, onChange, toggleComplete }) {
                         name="category"
                         value={item.category}
                         type="text"
-                        className="categoryinput"
+                        className="categoryinput" 
+                        aria-label="category"
                         onChange={(e) => onChange(e, item.id)}
                     />
                 </td>
@@ -32,7 +35,8 @@ function Item({ item, onDelete, onChange, toggleComplete }) {
                     <select 
                         name="priority"
                         value={item.priority}
-                        className="priorityinput" 
+                        className="priorityinput"  
+                        aria-labelledby="priority"
                         onChange={(e) => onChange(e, item.id)}>
                         <option value="LOW">
                         LOW
